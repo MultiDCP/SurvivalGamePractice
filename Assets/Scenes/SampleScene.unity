@@ -430,6 +430,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3
+  runSpeed: 8
+  crouchSpeed: 1
+  jumpForce: 5
+  crouchPosY: 0
   lookSensitivity: 3
   cameraRotationLimit: 45
   theCamera: {fileID: 963194227}
