@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Camera theCamera;
-
     private Rigidbody myRigid;
+    private GunController theGunController;
 
     // 지면 체크
     private void IsGround(){
@@ -66,6 +66,12 @@ public class PlayerController : MonoBehaviour
 
     // 달리기
     private void Running(){
+        if(isCrouch){
+            Crouch();
+        }
+        
+        theGunController.CancelFineSight();
+
         isRun = true;
         applySpeed = runSpeed;
     }
@@ -166,6 +172,8 @@ public class PlayerController : MonoBehaviour
         myRigid = GetComponent<Rigidbody>();
 
         applySpeed = walkSpeed;
+
+        theGunController = FindObjectOfType<GunController>();
 
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
