@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private float jumpForce;
 
     // 상태 변수
+    private bool isWalk = false;
     private bool isRun = false;
     private bool isCrouch = false; 
     private bool isGround = true;
@@ -40,11 +41,16 @@ public class PlayerController : MonoBehaviour
     private Camera theCamera;
     private Rigidbody myRigid;
     private GunController theGunController;
+    private Crosshair theCrosshair;
+
+    // 움직임 체크 변수
+    private Vector3 lastPos;
 
     // 지면 체크
     private void IsGround(){
         isGround = Physics.Raycast(transform.position, Vector3.down, capsuleCollider.bounds.extents.y + 0.1f);
         //0.1f의 경우 경사/계단과 같은 곳에서의 오차를 감안한 여유 거리
+        theCrosshair.RunningAnimation(!isGround);
     }
 
     // 점프
@@ -69,16 +75,18 @@ public class PlayerController : MonoBehaviour
         if(isCrouch){
             Crouch();
         }
-        
+
         theGunController.CancelFineSight();
 
         isRun = true;
+        theCrosshair.RunningAnimation(isRun);
         applySpeed = runSpeed;
     }
 
     // 달리기 중단
     private void RunningCancel(){
         isRun = false;
+        theCrosshair.RunningAnimation(isRun);
         applySpeed = walkSpeed;
     }
 
@@ -112,6 +120,7 @@ public class PlayerController : MonoBehaviour
     // 앉기
     private void Crouch(){
         isCrouch = !isCrouch;
+        theCrosshair.CrouchAnimation(isCrouch);
 
         if(isCrouch){
             applySpeed = crouchSpeed;
@@ -134,9 +143,11 @@ public class PlayerController : MonoBehaviour
     }
 
     // 이동
-    private void Move(){
+    private float Move(){
         float _moveDirX = Input.GetAxisRaw("Horizontal");
         float _moveDirZ = Input.GetAxisRaw("Vertical");
+        float moveXZAbsSum = Mathf.Abs(_moveDirX) + Mathf.Abs(_moveDirZ);
+        // 움직임이 있다면 그 값을 저장. 움직임이 있음에도 0이 되는 것을 막기 위해 절대값 이용.
 
         Vector3 _moveHorizontal = transform.right * _moveDirX;
         Vector3 _moveVertical = transform.forward * _moveDirZ;
@@ -146,6 +157,24 @@ public class PlayerController : MonoBehaviour
            개발자 입장에서도 1초에 얼마만큼 이동시킬 것인지 계산하기 편리해짐 */
 
         myRigid.MovePosition(transform.position + (_velocity * Time.deltaTime));
+
+        return moveXZAbsSum;
+    }
+
+    private void MoveCheck(float MoveXZ){
+        if(!isRun && !isCrouch && isGround){
+            //if(Vector3.Distance(lastPos, transform.position) >= 0.01f)
+            // Vector3.Distance가 가끔씩 0이 뜰 때가 있어 Walk 상탱임에도 Idle로 판단하는 경우 발생
+            if(MoveXZ != 0){ // 움직임이 있다면 0이 아님
+                isWalk = true;
+            }
+            else {
+                isWalk = false;
+            }
+
+            theCrosshair.WalkingAnimation(isWalk);
+            lastPos = transform.position;
+        }
     }
 
     // 카메라 상하 회전
@@ -170,11 +199,10 @@ public class PlayerController : MonoBehaviour
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
         myRigid = GetComponent<Rigidbody>();
+        theGunController = FindObjectOfType<GunController>();
+        theCrosshair = FindObjectOfType<Crosshair>();
 
         applySpeed = walkSpeed;
-
-        theGunController = FindObjectOfType<GunController>();
-
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
     }
@@ -185,10 +213,9 @@ public class PlayerController : MonoBehaviour
         TryJump();
         TryRun();
         TryCrouch();
-        Move();
+        float CheckMoveXZ = Move();
+        MoveCheck(CheckMoveXZ);
         CameraRotation();
         CharacterRotation();
     }
-
-    
 }
