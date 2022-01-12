@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     private void IsGround(){
         isGround = Physics.Raycast(transform.position, Vector3.down, capsuleCollider.bounds.extents.y + 0.1f);
         //0.1f의 경우 경사/계단과 같은 곳에서의 오차를 감안한 여유 거리
-        theCrosshair.RunningAnimation(!isGround);
+        theCrosshair.JumpingAnimation(!isGround);
     }
 
     // 점프
