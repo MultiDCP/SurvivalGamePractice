@@ -10,6 +10,9 @@ public class PickaxeController : CloseWeaponController
     protected override IEnumerator HitCoroutine(){
         while(isSwing){
             if(CheckObject()){
+                if(hitInfo.transform.tag == "Rock"){
+                    hitInfo.transform.GetComponent<Rock>().Mining();
+                }
                 isSwing = false;
                 // 충돌 감지
                 Debug.Log(hitInfo.transform.name);
