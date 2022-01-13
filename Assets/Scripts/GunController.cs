@@ -23,9 +23,6 @@ public class GunController : MonoBehaviour
     [SerializeField]
     private Vector3 originPos;
 
-    // 효과음
-    private AudioSource audioSource;
-
     // 레이캐스트 충돌 정보
     private RaycastHit hitInfo;
     [SerializeField]
@@ -36,11 +33,8 @@ public class GunController : MonoBehaviour
     [SerializeField]
     private GameObject hit_effect_prefab;
 
-    // 효과음 재생
-    private void PlaySE(AudioClip _clip){
-        audioSource.clip = _clip;
-        audioSource.Play();
-    }
+    [SerializeField]
+    private string gun_Fire;
 
     // 재장전 실행
     IEnumerator ReloadCoroutine(){
@@ -138,7 +132,7 @@ public class GunController : MonoBehaviour
         theCrosshair.FireAnimation();
         currentGun.currentBulletCount--;
         currentFireRate = currentGun.fireRate; // 연사 속도 재계산
-        PlaySE(currentGun.fire_Sound);
+        SoundManager.instance.PlaySE(gun_Fire);
         currentGun.muzzleFlash.Play();
         Hit();
 
@@ -221,10 +215,7 @@ public class GunController : MonoBehaviour
 
     void Start(){
         originPos = Vector3.zero;
-        audioSource = GetComponent<AudioSource>();
         theCrosshair = FindObjectOfType<Crosshair>();
-
-        
     }
 
     void Update()

@@ -23,6 +23,4 @@ public class Gun : MonoBehaviour
     public Vector3 fineSightOriginPos; // 정조준 시 위치
     public Animator anim;
     public ParticleSystem muzzleFlash; // 총구 섬광 파티클
-
-    public AudioClip fire_Sound; // 격발음
 }
