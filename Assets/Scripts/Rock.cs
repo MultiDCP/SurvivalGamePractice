@@ -24,6 +24,12 @@ public class Rock : MonoBehaviour
     // 채굴 이펙트
     [SerializeField]
     private GameObject go_effect_debris;
+    [SerializeField]
+    private GameObject go_rock_item_prefab;
+
+    // 드랍 아이템 개수
+    [SerializeField]
+    private int count;
 
     // 필요 사운드
     [SerializeField]
@@ -34,6 +40,10 @@ public class Rock : MonoBehaviour
     private void Destruction(){
         SoundManager.instance.PlaySE(destroy_Sound);
         col.enabled = false;
+
+        for(int i=0; i<count; i++){
+            Instantiate(go_rock_item_prefab, go_rock.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
         Destroy(go_rock);
 
         go_debris.SetActive(true);
