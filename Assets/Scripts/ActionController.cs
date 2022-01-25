@@ -18,6 +18,8 @@ public class ActionController : MonoBehaviour
 
     [SerializeField]
     private Text actionText;
+    [SerializeField]
+    private Inventory theInventory;
 
     private void ItemInfoAppear(){
         pickUpActivated = true;
@@ -46,6 +48,7 @@ public class ActionController : MonoBehaviour
         if(pickUpActivated){
             if(hitInfo.transform != null){
                 Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " 획득");
+                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
                 Destroy(hitInfo.transform.gameObject);
                 ItemInfoDisappear();
             }

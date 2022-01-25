@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43b160aea2dfd349a78c4181105ce56, type: 3}
-  m_Name: Rock
+  m_Name: Gun1
   m_EditorClassIdentifier: 
-  itemName: Rock
-  itemType: 2
-  itemImage: {fileID: 21300000, guid: 1ddfd4ec5522f0948a0c88cbdcaef43f, type: 3}
-  itemPrefab: {fileID: 3471793969565866942, guid: 8b250f42a9694044f9b14ec2c63947c2, type: 3}
-  weaponType: 
+  itemName: SubMachineGun1
+  itemType: 0
+  itemImage: {fileID: 21300000, guid: e7c59f50ff632ce4f88696c5cedf910f, type: 3}
+  itemPrefab: {fileID: 8091848848166660696, guid: 607b90fa8dddf884b9bdcbb61d5a18c2, type: 3}
+  weaponType: GUN

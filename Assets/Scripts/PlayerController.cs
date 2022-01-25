@@ -218,7 +218,9 @@ public class PlayerController : MonoBehaviour
         TryCrouch();
         float CheckMoveXZ = Move();
         MoveCheck(CheckMoveXZ);
-        CameraRotation();
-        CharacterRotation();
+        if(!Inventory.inventoryActivated){
+            CameraRotation();
+            CharacterRotation();
+        }
     }
 }
