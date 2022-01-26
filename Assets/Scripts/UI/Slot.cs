@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     private Vector3 originPos;
 
@@ -17,11 +17,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     [SerializeField]
     private GameObject go_CountImage;
 
-    private WeaponManager theWeaponManager;
+    private ItemEffectDatabase theItemEffectDatabase;
     
     void Start() {
+        theItemEffectDatabase = FindObjectOfType<ItemEffectDatabase>();
         originPos = transform.position;
-        theWeaponManager = FindObjectOfType<WeaponManager>();
     }
 
     // 이미지 투명도 조절
@@ -70,14 +70,21 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         SetColor(1);
     }
 
+    public void OnPointerEnter(PointerEventData eventData){
+        if(item != null){
+            theItemEffectDatabase.ShowToolTip(item, transform.position);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData){
+        theItemEffectDatabase.HideToolTip();
+    }
+
     public void OnPointerClick(PointerEventData eventData){
         if(eventData.button == PointerEventData.InputButton.Right){
             if(item != null){
-                if(item.itemType == Item.ItemType.Equipment){ // 장착
-                    StartCoroutine(theWeaponManager.ChangeWeaponCoroutine(item.weaponType, item.itemName));
-                }
-                else{ // 소모
-                    Debug.Log(item.itemName + " 을 사용했습니다.");
+                theItemEffectDatabase.UseItem(item);
+                if(item.itemType != Item.ItemType.Equipment){
                     SetSlotCount(-1);
                 }
             }

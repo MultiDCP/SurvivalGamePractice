@@ -124,6 +124,23 @@ public class StatusController : MonoBehaviour
         }
     }
 
+    public void IncreaseSP(int _count){
+        if(currentSp + _count < sp){
+            currentSp += _count;
+        }
+        else {
+            currentSp = sp;
+        }
+    }
+
+    public void DecreaseSp(int _count){
+        currentSp -= _count;
+
+        if(currentSp <= 0){
+            Debug.Log("캐릭터의 SP가 0이 되었습니다.");
+        }
+    }
+
     public void IncreaseDP(int _count){
         if(currentDp + _count < dp){
             currentDp += _count;
@@ -174,6 +191,24 @@ public class StatusController : MonoBehaviour
         }
         else {
             currentThirsty -= _count;
+        }
+    }
+
+    public void IncreaseSatisfy(int _count){
+        if(currentSatisfy + _count < satisfy){
+            currentSatisfy += _count;
+        }
+        else {
+            currentSatisfy = satisfy;
+        }
+    }
+
+    public void DecreaseSatisfy(int _count){
+        if(currentSatisfy - _count < 0){
+            currentSatisfy = 0;
+        }
+        else {
+            currentSatisfy -= _count;
         }
     }
 

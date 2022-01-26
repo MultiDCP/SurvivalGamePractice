@@ -6,6 +6,8 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public string itemName; // 이름
+    [TextArea]
+    public string itemDesc; // 설명
     public ItemType itemType; // 유형
     public Sprite itemImage; // 이미지
     public GameObject itemPrefab; // 프리팹
