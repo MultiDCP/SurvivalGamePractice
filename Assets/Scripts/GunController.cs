@@ -26,6 +26,9 @@ public class GunController : MonoBehaviour
     // 레이캐스트 충돌 정보
     private RaycastHit hitInfo;
     [SerializeField]
+    private LayerMask layerMask;
+
+    [SerializeField]
     private Camera theCam;
     private Crosshair theCrosshair;
 
@@ -121,7 +124,7 @@ public class GunController : MonoBehaviour
                         theCrosshair.GetAccuracy() + currentGun.accuracy),
                         Random.Range(-theCrosshair.GetAccuracy() - currentGun.accuracy,
                         theCrosshair.GetAccuracy() + currentGun.accuracy), 0),
-                out hitInfo, currentGun.range)){
+                out hitInfo, currentGun.range, layerMask)){
             GameObject clone = Instantiate(hit_effect_prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             Destroy(clone, 2f);
         }
