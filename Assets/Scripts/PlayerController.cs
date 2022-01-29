@@ -212,13 +212,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        IsGround();
-        TryJump();
-        TryRun();
-        TryCrouch();
-        float CheckMoveXZ = Move();
-        MoveCheck(CheckMoveXZ);
-        if(!Inventory.inventoryActivated){
+        if(GameManager.canPlayerMove){
+            IsGround();
+            TryJump();
+            TryRun();
+            TryCrouch();
+            float CheckMoveXZ = Move();
+            MoveCheck(CheckMoveXZ);
             CameraRotation();
             CharacterRotation();
         }
