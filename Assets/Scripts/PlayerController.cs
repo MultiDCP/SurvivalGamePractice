@@ -11,6 +11,13 @@ public class PlayerController : MonoBehaviour
     private float runSpeed; // 뛰기 스피드
     [SerializeField]
     private float crouchSpeed; // 앉기 스피드
+    [SerializeField]
+    private float swimSpeed;
+    [SerializeField]
+    private float swimFastSpeed;
+    [SerializeField]
+    private float upSwimSpeed;
+
     private float applySpeed; // 함수 하나에서 스피드 변수를 컨트롤하기 위한 변수
 
     [SerializeField]
@@ -64,10 +71,17 @@ public class PlayerController : MonoBehaviour
         myRigid.velocity = transform.up * jumpForce;
     }
 
+    private void UpSwim(){
+        myRigid.velocity = transform.up * upSwimSpeed;
+    }
+
     // 키 입력 시 점프 시도
     private void TryJump(){
-        if(Input.GetKeyDown(KeyCode.Space) && isGround && theStatusController.GetCurrentSP() > 0){
+        if(Input.GetKeyDown(KeyCode.Space) && isGround && theStatusController.GetCurrentSP() > 0 && !GameManager.isWater){
             Jump();
+        }
+        else if(Input.GetKey(KeyCode.Space) && GameManager.isWater){
+            UpSwim();
         }
     }
 
@@ -210,12 +224,26 @@ public class PlayerController : MonoBehaviour
         applyCrouchPosY = originPosY;
     }
 
+    private void WaterCheck(){
+        if(GameManager.isWater){
+            if(Input.GetKey(KeyCode.LeftShift)){
+                applySpeed = swimFastSpeed;
+            }
+            else{
+                applySpeed = swimSpeed;
+            }
+        }
+    }
+
     void Update()
     {
         if(GameManager.canPlayerMove){
+            WaterCheck();
             IsGround();
             TryJump();
-            TryRun();
+            if(!GameManager.isWater){
+                TryRun();
+            }
             TryCrouch();
             float CheckMoveXZ = Move();
             MoveCheck(CheckMoveXZ);

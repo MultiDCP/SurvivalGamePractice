@@ -111,6 +111,21 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    public IEnumerator WeaponInCoroutine(){
+        isChangeWeapon = false;
+        currentWeaponAnim.SetTrigger("Weapon_Out");
+
+        yield return new WaitForSeconds(changeWeaponDelayTime);
+
+        currentWeapon.gameObject.SetActive(false);
+    }
+
+    public void WeaponOut(){
+        isChangeWeapon = false;
+
+        currentWeapon.gameObject.SetActive(true);
+    }
+
     void Update() {
         if(!isChangeWeapon){
             if(Input.GetKeyDown(KeyCode.Alpha1)){

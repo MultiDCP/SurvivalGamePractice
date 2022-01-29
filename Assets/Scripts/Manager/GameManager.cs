@@ -10,10 +10,15 @@ public class GameManager : MonoBehaviour
     public static bool isOpenCraftManual = false; // 건축 메뉴창 활성화 여부
 
     public static bool isNight = false;
+    public static bool isWater = false;
+
+    private WeaponManager theWM;
+    private bool flag = false;
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        theWM = FindObjectOfType<WeaponManager>();
     }
 
     private void Update() {
@@ -26,6 +31,20 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             canPlayerMove = true;
+        }
+
+        if(isWater){
+            if(!flag){
+                StopAllCoroutines();
+                StartCoroutine(theWM.WeaponInCoroutine());
+                flag = true;
+            }
+        }
+        else{
+            if(flag){
+                theWM.WeaponOut();
+                flag = false;
+            }
         }
     }
 }
