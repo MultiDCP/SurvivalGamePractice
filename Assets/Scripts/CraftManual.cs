@@ -19,7 +19,12 @@ public class CraftManual : MonoBehaviour
     private GameObject go_BaseUI; // 기본 베이스 UI
 
     [SerializeField]
+    private GameObject[] go_Slot; // 탭과 연결된 슬롯의 게임오브젝트(0-불, 1-트랩)
+
+    [SerializeField]
     private Craft[] craft_fire; // 모닥불용 탭
+    [SerializeField]
+    private Craft[] craft_trap; // 덫 전용 탭
 
     private GameObject go_Preview; // 미리보기 프리팹 담을 변수
     private GameObject go_Prefab; // 실제 생성될 프리팹 담을 변수
@@ -33,13 +38,47 @@ public class CraftManual : MonoBehaviour
     [SerializeField]
     private float range;
 
-    public void SlotClick(int _slotNumber){
-        go_Preview = Instantiate(craft_fire[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
-        go_Prefab = craft_fire[_slotNumber].go_Prefab;
-        
+    private void TapClick(int _tapIndex){
+        for(int i=0; i<go_Slot.Length; i++){
+            if(i == _tapIndex){
+                go_Slot[i].SetActive(true);
+                continue;
+            }
+            go_Slot[i].SetActive(false);
+        }
+    }
+
+    public void FireTabClick(){
+        TapClick(0);
+    }
+
+    public void TrapTabClick(){
+        TapClick(1);
+    }
+
+    private void SlotClick(int _craftIndex, int _slotNumber){
+        switch(_craftIndex){
+            case 0:
+                go_Preview = Instantiate(craft_fire[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
+                go_Prefab = craft_fire[_slotNumber].go_Prefab;
+                break;
+            case 1:
+                go_Preview = Instantiate(craft_trap[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
+                go_Prefab = craft_trap[_slotNumber].go_Prefab;
+                break;
+        }
+
         isPreviewActivated = true;
         GameManager.isOpenCraftManual = false;
         go_BaseUI.SetActive(false);
+    }
+
+    public void FireSlotClick(int _slotNumber){
+        SlotClick(0, _slotNumber);
+    }
+
+    public void TrapSlotClick(int _slotNumber){
+        SlotClick(1, _slotNumber);
     }
 
     private void OpenWindow(){
