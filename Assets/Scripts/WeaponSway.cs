@@ -63,7 +63,7 @@ public class WeaponSway : MonoBehaviour
     }
 
     void Update() {
-        if(!GameManager.isOpenInventory && !GameManager.isOpenCraftManual){
+        if(!GameManager.isOpenInventory && !GameManager.isOpenCraftManual && GameManager.canPlayerMove){
             TrySway();
         }
     }
