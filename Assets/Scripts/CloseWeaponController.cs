@@ -17,6 +17,9 @@ public abstract class CloseWeaponController : MonoBehaviour
     [SerializeField]
     protected LayerMask layerMask;
 
+    [SerializeField]
+    private PlayerController thePlayerController;
+
     protected bool CheckObject(){
         if(Physics.Raycast(transform.position, transform.forward, out hitInfo, currentCloseWeapon.range, layerMask)){
             return true;
@@ -26,20 +29,20 @@ public abstract class CloseWeaponController : MonoBehaviour
 
     protected abstract IEnumerator HitCoroutine();
 
-    protected IEnumerator AttackCoroutine(){
+    protected IEnumerator AttackCoroutine(string swingType, float _delayA, float _delayB, float _delayC){
         isAttack = true;
-        currentCloseWeapon.anim.SetTrigger("Attack"); // 애니메이션 트리거 작동
+        currentCloseWeapon.anim.SetTrigger(swingType); // 애니메이션 트리거 작동
 
-        yield return new WaitForSeconds(currentCloseWeapon.attackDelayA);
+        yield return new WaitForSeconds(_delayA);
         isSwing = true;
 
         // 공격 활성화 시점
         StartCoroutine(HitCoroutine());
 
-        yield return new WaitForSeconds(currentCloseWeapon.attackDelayB);
+        yield return new WaitForSeconds(_delayB);
         isSwing = false;
 
-        yield return new WaitForSeconds(currentCloseWeapon.attackDelay - currentCloseWeapon.attackDelayA - currentCloseWeapon.attackDelayB);
+        yield return new WaitForSeconds(_delayC - _delayA - _delayB);
         isAttack = false;
     }
 
@@ -47,7 +50,15 @@ public abstract class CloseWeaponController : MonoBehaviour
         if(!Inventory.inventoryActivated){
             if(Input.GetButton("Fire1")){
                 if(!isAttack){
-                    StartCoroutine(AttackCoroutine());
+                    if(CheckObject()){
+                        if(currentCloseWeapon.isAxe && hitInfo.transform.tag == "Tree"){
+                            StartCoroutine(thePlayerController.TreeLookCoroutine(hitInfo.transform.GetComponent<TreeComponent>().GetTreeCenterPos()));
+                            StartCoroutine(AttackCoroutine("Chop", currentCloseWeapon.workDelayA, currentCloseWeapon.workDelayB, currentCloseWeapon.workDelay));
+                            return;
+                        }
+                    }
+
+                    StartCoroutine(AttackCoroutine("Attack", currentCloseWeapon.attackDelayA, currentCloseWeapon.attackDelayB, currentCloseWeapon.attackDelay));
                 }
             }
         }
