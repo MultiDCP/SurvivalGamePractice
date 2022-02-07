@@ -18,9 +18,13 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private GameObject go_CountImage;
 
     private ItemEffectDatabase theItemEffectDatabase;
+    private Rect baseRect;
+    private InputNumber theInputNumber;
     
     void Start() {
+        baseRect = transform.parent.parent.GetComponent<RectTransform>().rect;
         theItemEffectDatabase = FindObjectOfType<ItemEffectDatabase>();
+        theInputNumber = FindObjectOfType<InputNumber>();
         originPos = transform.position;
     }
 
@@ -84,7 +88,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         if(eventData.button == PointerEventData.InputButton.Right){
             if(item != null){
                 theItemEffectDatabase.UseItem(item);
-                if(item.itemType != Item.ItemType.Equipment){
+                if(item.itemType == Item.ItemType.Used){
                     SetSlotCount(-1);
                 }
             }
@@ -107,8 +111,16 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     }
 
     public void OnEndDrag(PointerEventData eventData){
-        DragSlot.instance.SetColor(0);
-        DragSlot.instance.dragSlot = null;
+        if(DragSlot.instance.transform.localPosition.x < baseRect.xMin || DragSlot.instance.transform.localPosition.x > baseRect.xMax
+            || DragSlot.instance.transform.localPosition.y < baseRect.yMin || DragSlot.instance.transform.localPosition.y > baseRect.yMax){
+                if(DragSlot.instance.dragSlot != null){
+                    theInputNumber.Call();
+                }
+        }
+        else{
+            DragSlot.instance.SetColor(0);
+            DragSlot.instance.dragSlot = null;
+        }
     }
 
     private void ChangeSlot(){
