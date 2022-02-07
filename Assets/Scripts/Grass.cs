@@ -15,6 +15,12 @@ public class Grass : MonoBehaviour
     [SerializeField]
     private GameObject go_hit_effect_prefab; // 타격 효과
 
+    [SerializeField]
+    private Item item_leaf;
+    [SerializeField]
+    private int leafCount;
+    private Inventory theInventory;
+
     private Rigidbody[] rigidbodies;
     private BoxCollider[] boxColliders;
 
@@ -22,6 +28,7 @@ public class Grass : MonoBehaviour
     private string hit_sound;
 
     private void Start() {
+        theInventory = FindObjectOfType<Inventory>();
         rigidbodies = this.transform.GetComponentsInChildren<Rigidbody>();
         boxColliders = transform.GetComponentsInChildren<BoxCollider>();
     }
@@ -34,6 +41,8 @@ public class Grass : MonoBehaviour
     }
 
     private void Destruction(){
+        theInventory.AcquireItem(item_leaf, leafCount);
+        
         for(int i=0; i<rigidbodies.Length; i++){
             rigidbodies[i].useGravity = true;
             rigidbodies[i].AddExplosionForce(force, transform.position, 1f);

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 18366114479741265}
   - component: {fileID: 5673101644425081239}
   - component: {fileID: 3081694633966596259}
-  m_Layer: 0
-  m_Name: Little_Twig
-  m_TagString: Untagged
+  - component: {fileID: 3459174015822369397}
+  m_Layer: 10
+  m_Name: Little_Twig_Item
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,3 +115,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3459174015822369397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964065946353514628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2a99122ac3edd4cb981949822cf2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: a6b61cd4ca76daf4294dbfae3fb77a5e, type: 2}

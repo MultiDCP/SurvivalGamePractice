@@ -49,7 +49,9 @@ public class InputNumber : MonoBehaviour
 
     IEnumerator DropItemCoroutine(int _num){
         for(int i=0; i<_num; i++){
-            Instantiate(DragSlot.instance.dragSlot.item.itemPrefab, thePlayer.transform.position + thePlayer.transform.forward, Quaternion.identity);
+            if(DragSlot.instance.dragSlot.item.itemPrefab != null)
+                Instantiate(DragSlot.instance.dragSlot.item.itemPrefab, thePlayer.transform.position + thePlayer.transform.forward, Quaternion.identity);
+            
             DragSlot.instance.dragSlot.SetSlotCount(-1);
             yield return new WaitForSeconds(0.05f);
         }
