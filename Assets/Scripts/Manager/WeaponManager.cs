@@ -125,22 +125,4 @@ public class WeaponManager : MonoBehaviour
 
         currentWeapon.gameObject.SetActive(true);
     }
-
-    void Update() {
-        if(!isChangeWeapon){
-            if(Input.GetKeyDown(KeyCode.Alpha1)){
-                StartCoroutine(ChangeWeaponCoroutine("HAND", "맨손"));
-            }
-            else if(Input.GetKeyDown(KeyCode.Alpha2)){
-                StartCoroutine(ChangeWeaponCoroutine("GUN", "SubMachineGun1"));
-            }
-            else if(Input.GetKeyDown(KeyCode.Alpha3)){
-                StartCoroutine(ChangeWeaponCoroutine("AXE", "Axe"));
-            }
-            else if(Input.GetKeyDown(KeyCode.Alpha4)){
-                StartCoroutine(ChangeWeaponCoroutine("PICKAXE", "Pickaxe"));
-            }
-        }
-    }
-
 }
