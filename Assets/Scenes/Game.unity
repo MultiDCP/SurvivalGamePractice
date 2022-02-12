@@ -1969,6 +1969,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: isQuickSlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -4353,7 +4361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10910,6 +10918,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: isQuickSlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -11019,6 +11035,14 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: isQuickSlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -11377,6 +11401,10 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: isQuickSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -11843,6 +11871,14 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: isQuickSlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -13218,6 +13254,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: isQuickSlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -13481,6 +13525,14 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: isQuickSlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -19655,6 +19707,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: isQuickSlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -20131,6 +20191,7 @@ MonoBehaviour:
   thePlayerStatus: {fileID: 1599840801}
   theWeaponManager: {fileID: 1623588088}
   theSlotToolTip: {fileID: 1699610722}
+  theQuickSlotController: {fileID: 347233148}
 --- !u!4 &1815458574
 Transform:
   m_ObjectHideFlags: 0

@@ -21,6 +21,12 @@ public class QuickSlotController : MonoBehaviour
         selectedSlot = 0; // 0~7
     }
 
+    public void IsActivatedQuickSlot(int _num){
+        if(selectedSlot == _num || DragSlot.instance.dragSlot.GetQuickSlotNumber() == selectedSlot){
+            Execute();
+        }
+    }
+
     private void SlotSelect(int _num){
         selectedSlot = _num;
         go_SelectedImage.transform.position = quickSlots[selectedSlot].transform.position;
