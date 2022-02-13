@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuickSlotController : MonoBehaviour
 {
     [SerializeField]
     private Slot[] quickSlots; // 퀵슬롯들
+    [SerializeField]
+    private Image[] img_Cooltime; // 퀵슬롯 쿨타임 이미지
     [SerializeField]
     private Transform tf_parent; // 퀵슬롯의 부모 객체
 
@@ -13,21 +16,44 @@ public class QuickSlotController : MonoBehaviour
     private Transform tf_ItemPos; // 아이템이 위치할 손 끝
     public static GameObject go_HandItem; // 손에 든 아이템 정보 저장
 
+    // 쿨타임 관련
+    [SerializeField]
+    private float coolTime;
+    private float currentCoolTime;
+    private bool isCoolTime;
+
     private int selectedSlot; // 선택된 퀵슬롯
 
     [SerializeField]
     private GameObject go_SelectedImage; // 선택된 퀵슬롯의 이미지
     [SerializeField]
     private WeaponManager theWeaponManager;
+    private Animator anim;
+
+    // 등장 내용
+    [SerializeField]
+    private float appearTime;
+    private float currentAppearTime;
+    private bool isAppear;
 
     private void Start(){
         quickSlots = tf_parent.GetComponentsInChildren<Slot>();
+        anim = GetComponent<Animator>();
         selectedSlot = 0; // 0~7
     }
 
     public void IsActivatedQuickSlot(int _num){
-        if(selectedSlot == _num || DragSlot.instance.dragSlot.GetQuickSlotNumber() == selectedSlot){
+        if(selectedSlot == _num){
             Execute();
+            return;
+        }
+        if(DragSlot.instance != null){
+            if(DragSlot.instance.dragSlot != null){
+                if(DragSlot.instance.dragSlot.GetQuickSlotNumber() == selectedSlot){
+                    Execute();
+                    return;
+                }
+            }
         }
     }
 
@@ -56,7 +82,15 @@ public class QuickSlotController : MonoBehaviour
         }
     }
 
+    private void CoolTimeReset(){
+        currentCoolTime = coolTime;
+        isCoolTime = true;
+    }
+
     private void Execute(){
+        CoolTimeReset();
+        AppearReset();
+
         if(quickSlots[selectedSlot].item != null){
             if(quickSlots[selectedSlot].item.itemType == Item.ItemType.Equipment){
                 StartCoroutine(theWeaponManager.ChangeWeaponCoroutine(
@@ -81,40 +115,83 @@ public class QuickSlotController : MonoBehaviour
     }
 
     private void TryInputNumber(){
-        if(Input.GetKeyDown(KeyCode.Alpha1)){
-            ChangeSlot(0);
+        if(!isCoolTime){
+            if(Input.GetKeyDown(KeyCode.Alpha1)){
+                ChangeSlot(0);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha2)){
+                ChangeSlot(1);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha3)){
+                ChangeSlot(2);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha4)){
+                ChangeSlot(3);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha5)){
+                ChangeSlot(4);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha6)){
+                ChangeSlot(5);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha7)){
+                ChangeSlot(6);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha8)){
+                ChangeSlot(7);
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha2)){
-            ChangeSlot(1);
+    }
+
+    private void CoolTimeCalc(){
+        if(isCoolTime){
+            currentCoolTime -= Time.deltaTime;
+            for(int i=0; i<img_Cooltime.Length; i++)
+                img_Cooltime[i].fillAmount = currentCoolTime / coolTime;
+
+            if(currentCoolTime <= 0)
+                isCoolTime = false;
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha3)){
-            ChangeSlot(2);
+    }
+
+    private void AppearReset(){
+        currentAppearTime = appearTime;
+        isAppear = true;
+        anim.SetBool("Appear", isAppear);
+    }
+    
+    private void AppearCalc(){
+        if(Inventory.inventoryActivated){
+            AppearReset();
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha4)){
-            ChangeSlot(3);
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha5)){
-            ChangeSlot(4);
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha6)){
-            ChangeSlot(5);
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha7)){
-            ChangeSlot(6);
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha8)){
-            ChangeSlot(7);
+        else{
+            if(isAppear){
+                currentAppearTime -= Time.deltaTime;
+                if(currentAppearTime <= 0){
+                    isAppear = false;
+                    anim.SetBool("Appear", isAppear);
+                }
+            }
         }
     }
 
     private void Update() {
         TryInputNumber();
+        CoolTimeCalc();
+        AppearCalc();
     }
 
     public void EatItem(){
+        CoolTimeReset();
+        AppearReset();
+
         quickSlots[selectedSlot].SetSlotCount(-1);
 
         if(quickSlots[selectedSlot].itemCount <= 0)
             Destroy(go_HandItem);
+    }
+
+    public bool GetIsGoolTime(){
+        return isCoolTime;
     }
 }

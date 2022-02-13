@@ -107,7 +107,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     }
 
     public void OnBeginDrag(PointerEventData eventData){
-        if(item != null){
+        if(item != null && Inventory.inventoryActivated){
             DragSlot.instance.dragSlot = this;
             DragSlot.instance.DragSetImage(itemImage);
 
