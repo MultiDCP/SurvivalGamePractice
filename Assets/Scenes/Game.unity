@@ -298,6 +298,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -896,6 +900,10 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -1538,6 +1546,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -1960,6 +1972,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2502880530313906136, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3898307911977334096, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: m_Name
       value: Slot (5)
@@ -2129,6 +2145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quickSlots: []
   tf_parent: {fileID: 1868960192}
+  tf_ItemPos: {fileID: 995201510}
   go_SelectedImage: {fileID: 763427747}
   theWeaponManager: {fileID: 1623588088}
 --- !u!1 &357629212
@@ -2414,6 +2431,10 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -3096,6 +3117,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -3535,6 +3560,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -3845,6 +3874,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -4033,6 +4066,10 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -4692,6 +4729,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -4999,6 +5040,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -5108,6 +5153,10 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -5569,6 +5618,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990279960}
   m_CullTransparentMesh: 1
+--- !u!1 &995201509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995201510}
+  m_Layer: 9
+  m_Name: ItemPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &995201510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995201509}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.00063, y: 0.00292, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6766814066565475825}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &998088738
 GameObject:
   m_ObjectHideFlags: 0
@@ -10909,6 +10988,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2502880530313906136, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3898307911977334096, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: m_Name
       value: Slot (7)
@@ -11025,6 +11108,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 188954674179796820, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502880530313906136, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3898307911977334096, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
@@ -11391,6 +11478,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 188954674179796820, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502880530313906136, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3898307911977334096, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
@@ -11863,6 +11954,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2502880530313906136, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3898307911977334096, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: m_Name
       value: Slot (3)
@@ -12150,6 +12245,10 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -13245,6 +13344,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2502880530313906136, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3898307911977334096, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: m_Name
       value: Slot (6)
@@ -13515,6 +13618,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 188954674179796820, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502880530313906136, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3898307911977334096, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
@@ -18727,6 +18834,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -19083,6 +19194,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -19150,6 +19265,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1587
   thePlayerController: {fileID: 1599840795}
+  theQuickSlot: {fileID: 347233148}
 --- !u!114 &1623588086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19698,6 +19814,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2502880530313906136, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3898307911977334096, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: m_Name
       value: Slot (4)
@@ -19824,6 +19944,10 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -21109,6 +21233,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -21205,7 +21333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1932752296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22054,6 +22182,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -22674,6 +22806,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -22783,6 +22919,10 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 1795159138}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -24386,6 +24526,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795159138}
     - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
+      propertyPath: quickSlotNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420146283587058578, guid: 3a310261a5ccc8343be9be7f7cb7daef, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 1868960192}
@@ -24981,9 +25125,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3443639676685639515}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.010075531, z: 0}
+  m_LocalPosition: {x: 0, y: 0.010075531, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 995201510}
   m_Father: {fileID: 149276520218269192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,6 +9,10 @@ public class QuickSlotController : MonoBehaviour
     [SerializeField]
     private Transform tf_parent; // 퀵슬롯의 부모 객체
 
+    [SerializeField]
+    private Transform tf_ItemPos; // 아이템이 위치할 손 끝
+    public static GameObject go_HandItem; // 손에 든 아이템 정보 저장
+
     private int selectedSlot; // 선택된 퀵슬롯
 
     [SerializeField]
@@ -32,6 +36,26 @@ public class QuickSlotController : MonoBehaviour
         go_SelectedImage.transform.position = quickSlots[selectedSlot].transform.position;
     }
 
+    IEnumerator HandItemCoroutine(){
+        HandController.isActivate = false;
+        yield return new WaitUntil(() => HandController.isActivate);
+
+        go_HandItem = Instantiate(quickSlots[selectedSlot].item.itemPrefab, tf_ItemPos.position, tf_ItemPos.rotation);
+        go_HandItem.GetComponent<Rigidbody>().isKinematic = true;
+        go_HandItem.GetComponent<BoxCollider>().enabled = false;
+        go_HandItem.tag = "Untagged";
+        go_HandItem.layer = 9; // Weapon Layer
+        go_HandItem.transform.SetParent(tf_ItemPos);
+    }
+
+    private void ChangeHand(Item _item = null){
+        StartCoroutine(theWeaponManager.ChangeWeaponCoroutine("HAND", "맨손"));
+
+        if(_item != null){
+            StartCoroutine(HandItemCoroutine());// 아이템 손 끝에 생성
+        }
+    }
+
     private void Execute(){
         if(quickSlots[selectedSlot].item != null){
             if(quickSlots[selectedSlot].item.itemType == Item.ItemType.Equipment){
@@ -39,14 +63,14 @@ public class QuickSlotController : MonoBehaviour
                     quickSlots[selectedSlot].item.weaponType, quickSlots[selectedSlot].item.itemName));
             }
             else if(quickSlots[selectedSlot].item.itemType == Item.ItemType.Used){
-                StartCoroutine(theWeaponManager.ChangeWeaponCoroutine("HAND", "맨손"));
+                ChangeHand(quickSlots[selectedSlot].item);
             }
             else{
-                StartCoroutine(theWeaponManager.ChangeWeaponCoroutine("HAND", "맨손"));
+                ChangeHand();
             }
         }
         else{
-            StartCoroutine(theWeaponManager.ChangeWeaponCoroutine("HAND", "맨손"));
+            ChangeHand();
         }
     }
 
@@ -85,5 +109,12 @@ public class QuickSlotController : MonoBehaviour
 
     private void Update() {
         TryInputNumber();
+    }
+
+    public void EatItem(){
+        quickSlots[selectedSlot].SetSlotCount(-1);
+
+        if(quickSlots[selectedSlot].itemCount <= 0)
+            Destroy(go_HandItem);
     }
 }

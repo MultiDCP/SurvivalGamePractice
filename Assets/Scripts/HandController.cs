@@ -6,6 +6,9 @@ public class HandController : CloseWeaponController
 {
     // 현재 활성화 여부
     public static bool isActivate = false;
+    
+    [SerializeField]
+    private QuickSlotController theQuickSlot;
 
     protected override IEnumerator HitCoroutine(){
         while(isSwing){
@@ -24,10 +27,20 @@ public class HandController : CloseWeaponController
         isActivate = true;;
     }
 
+    private void TryEating(){
+        if(Input.GetButtonDown("Fire2")){
+            currentCloseWeapon.anim.SetTrigger("Eat");
+            theQuickSlot.EatItem();
+        }
+    }
+
     protected void Update()
     {
-        if(isActivate){
-            TryAttack();
+        if(isActivate && !Inventory.inventoryActivated){
+            if(QuickSlotController.go_HandItem == null)
+                TryAttack();
+            else
+                TryEating();
         }
     }
 }
