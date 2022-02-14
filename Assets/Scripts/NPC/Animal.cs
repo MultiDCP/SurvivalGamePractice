@@ -25,6 +25,7 @@ public class Animal : MonoBehaviour
     protected bool isAction; // 행동중인지 여부 판별
     protected bool isWalking; // 걷는지 여부 판별
     protected bool isRunning; // 뛰는지 여부 판별
+    protected bool isChasing; // 추격중인지 판별
     protected bool isDead;
 
     [SerializeField]
@@ -43,6 +44,7 @@ public class Animal : MonoBehaviour
     protected BoxCollider boxCol;
     protected AudioSource theAudio;
     protected NavMeshAgent nav;
+    protected FieldOfViewAngle theViewAngle;
 
     [SerializeField]
     protected AudioClip[] sound_Normal;
@@ -54,6 +56,7 @@ public class Animal : MonoBehaviour
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
+        theViewAngle = GetComponent<FieldOfViewAngle>();
         theAudio = GetComponent<AudioSource>();
         currentTime = waitTime;
         isAction = true;
@@ -89,7 +92,7 @@ public class Animal : MonoBehaviour
         }   
     }
 
-    protected virtual void ResetAnim(){
+    protected virtual void ResetAnimal(){
         isWalking = false;
         isAction = true;
         isRunning = false;
@@ -108,8 +111,8 @@ public class Animal : MonoBehaviour
     protected void ElapseTime(){
         if(isAction){
             currentTime -= Time.deltaTime;
-            if(currentTime <= 0){
-                ResetAnim();
+            if(currentTime <= 0 && !isChasing){
+                ResetAnimal();
             }
         }
     }
@@ -138,7 +141,7 @@ public class Animal : MonoBehaviour
         theAudio.Play();
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if(!isDead){
             Move();

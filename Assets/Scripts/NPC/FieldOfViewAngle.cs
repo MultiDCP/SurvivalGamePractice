@@ -11,12 +11,16 @@ public class FieldOfViewAngle : MonoBehaviour
     [SerializeField]
     private LayerMask targetMask; // 타겟 마스크(플레이어)
 
-    private Pig thePig;
+    private PlayerController thePlayer;
 
     void Start(){
-        thePig = GetComponent<Pig>();
+        thePlayer = FindObjectOfType<PlayerController>();
     }
 
+    public Vector3 GetTargetPos(){
+        return thePlayer.transform.position;
+    }
+/*
     private Vector3 BoundaryAngle(float _angle){
         _angle += transform.eulerAngles.y; // 자기 자신의 오일러 angle의 y값을 더해줌
         return new Vector3(Mathf.Sin(_angle * Mathf.Deg2Rad), 0f, Mathf.Cos(_angle * Mathf.Deg2Rad));
@@ -34,16 +38,17 @@ public class FieldOfViewAngle : MonoBehaviour
            다만 angle은 지금 라디안 값이 아니라 float 값의 각도이므로
            Mathf.Sin과 MathF.Cos 메소드로 계산하려면 이를 라디안값으로 변환을 해주어야 한다.
            따라서 이를 모두 변환한 뒤 계산하면 우리가 원하는 Vector3 좌표를 얻을 수 있게 된다.
-        */
-    }
+        
+    }*/
 
-    private void View(){
+    public bool View(){
+        /*
         Vector3 _leftBoundary = BoundaryAngle(-viewAngle * 0.5f); // 왼쪽으로 치우쳐야 해서 마이너스
         Vector3 _rightBoundary = BoundaryAngle(viewAngle * 0.5f);
 
         Debug.DrawRay(transform.position + transform.up, _leftBoundary * 10, Color.red);
         Debug.DrawRay(transform.position + transform.up, _rightBoundary * 10, Color.red);
-
+        */
         Collider[] _target = Physics.OverlapSphere(transform.position, viewDistance, targetMask);
 
         for(int i=0; i<_target.Length; i++){
@@ -58,16 +63,13 @@ public class FieldOfViewAngle : MonoBehaviour
                         if(_hit.transform.name == "Player"){
                             Debug.Log("플레이어가 돼지 시야 내에 있습니다.");
                             Debug.DrawRay(transform.position + transform.up, _direction, Color.blue);
-                            thePig.Run(_hit.transform.position);
+                            
+                            return true;
                         }
                     }
                 }
             }
         }
+        return false;
     }
-
-    private void Update() {
-        View();
-    }
-
 }

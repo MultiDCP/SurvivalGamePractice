@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Pig : WeakAnimal
 {
-    protected override void ResetAnim()
+    protected override void ResetAnimal()
     {
-        base.ResetAnim();
+        base.ResetAnimal();
         RandomAction();
     }
 
@@ -42,6 +42,13 @@ public class Pig : WeakAnimal
         }
         else if(_random == 3){
             TryWalk();
+        }
+    }
+
+    protected override void Update() {
+        base.Update();
+        if(theViewAngle.View() && !isDead){
+            Run(theViewAngle.GetTargetPos());
         }
     }
 }
