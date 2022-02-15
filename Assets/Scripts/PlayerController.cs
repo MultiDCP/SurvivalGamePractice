@@ -273,4 +273,8 @@ public class PlayerController : MonoBehaviour
             CharacterRotation();
         }
     }
+
+    public bool GetRun(){
+        return isRun;
+    }
 }

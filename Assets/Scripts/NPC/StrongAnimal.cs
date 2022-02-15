@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class StrongAnimal : Animal
 {
+    [SerializeField]    
+    protected int attackDamage; // 공격 데미지
+    [SerializeField]
+    protected float attackDelay; // 공격 딜레이
+    [SerializeField]
+    protected LayerMask targetMask; // 타겟 마스크(플레이어가 될 것)
+
     [SerializeField]
     protected float chaseTime; // 총 추격 시간
     protected float currentChaseTime; // 계산
@@ -26,5 +33,52 @@ public class StrongAnimal : Animal
         if(!isDead){
             Chase(_targetPos);
         }
+    }
+
+    protected IEnumerator AttackCoroutine(){
+        isAttacking = true;
+        nav.ResetPath();
+        currentChaseTime = chaseTime;
+        
+        yield return new WaitForSeconds(0.5f);
+        transform.LookAt(theViewAngle.GetTargetPos());
+
+        anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.5f);
+        RaycastHit _hit;
+        if(Physics.Raycast(transform.position + Vector3.up, transform.forward, out _hit, 3, targetMask)){
+            Debug.Log("플레이어 적중");
+            thePlayerStatus.DecreaseHp(attackDamage);
+        }
+        else{
+            Debug.Log("플레이어 감나빗");
+        }
+
+        yield return new WaitForSeconds(attackDelay);
+        isAttacking = false;
+        StartCoroutine(ChaseTargetCoroutine());
+    }
+
+    protected IEnumerator ChaseTargetCoroutine(){
+        currentChaseTime = 0;
+
+        while(currentChaseTime < chaseTime){
+            Chase(theViewAngle.GetTargetPos());
+
+            // 플레이어가 충분히 가까이 있을 때  
+            if(Vector3.Distance(transform.position, theViewAngle.GetTargetPos()) <= 3f){
+                if(theViewAngle.View()){ // 눈 앞에 있을 때  
+                    Debug.Log("플레이어 공격 시도");
+                    StartCoroutine(AttackCoroutine());
+                }
+            }
+            yield return new WaitForSeconds(chaseDelayTime);
+            currentChaseTime += chaseDelayTime;
+        }
+
+        isChasing = false;
+        isRunning = false;
+        anim.SetBool("Run", isRunning);
+        nav.ResetPath();
     }
 }

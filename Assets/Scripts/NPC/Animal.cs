@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Animal : MonoBehaviour
 {
+    protected StatusController thePlayerStatus;
+
     [SerializeField]
     protected string animalName; // 동물 이름
     [SerializeField]
@@ -26,6 +28,7 @@ public class Animal : MonoBehaviour
     protected bool isWalking; // 걷는지 여부 판별
     protected bool isRunning; // 뛰는지 여부 판별
     protected bool isChasing; // 추격중인지 판별
+    protected bool isAttacking; // 공격중인지 판별
     protected bool isDead;
 
     [SerializeField]
@@ -55,6 +58,7 @@ public class Animal : MonoBehaviour
 
     void Start()
     {
+        thePlayerStatus = FindObjectOfType<StatusController>();
         nav = GetComponent<NavMeshAgent>();
         theViewAngle = GetComponent<FieldOfViewAngle>();
         theAudio = GetComponent<AudioSource>();
@@ -111,7 +115,7 @@ public class Animal : MonoBehaviour
     protected void ElapseTime(){
         if(isAction){
             currentTime -= Time.deltaTime;
-            if(currentTime <= 0 && !isChasing){
+            if(currentTime <= 0 && !isChasing && !isAttacking){
                 ResetAnimal();
             }
         }
