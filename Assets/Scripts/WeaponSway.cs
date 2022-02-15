@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponSway : MonoBehaviour
 {
+    public static bool isActivated = true;
+
     // 기존 위치
     private Vector3 originPos;
 
@@ -63,7 +65,7 @@ public class WeaponSway : MonoBehaviour
     }
 
     void Update() {
-        if(!GameManager.isOpenInventory && !GameManager.isOpenCraftManual && GameManager.canPlayerMove){
+        if(!GameManager.isOpenInventory && isActivated && !GameManager.isOpenCraftManual && GameManager.canPlayerMove){
             TrySway();
         }
     }
