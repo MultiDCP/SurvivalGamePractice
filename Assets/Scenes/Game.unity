@@ -19471,6 +19471,7 @@ GameObject:
   - component: {fileID: 1599840796}
   - component: {fileID: 1599840795}
   - component: {fileID: 1599840801}
+  - component: {fileID: 1599840802}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -19625,6 +19626,22 @@ MonoBehaviour:
   - {fileID: 629805009}
   - {fileID: 2107677618}
   - {fileID: 1891728462}
+--- !u!114 &1599840802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599840794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc71a3254deb3a4dbbc41c3eaf72649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
+  damageTime: 0.5
+  durationTime: 3
+  flame_Prefab: {fileID: 62274144915274022, guid: d568e486d27454148aec79e9772ba3a0, type: 3}
 --- !u!1001 &1604955488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24459,6 +24476,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 655294850, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3760125754971408952, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -24502,6 +24523,10 @@ PrefabInstance:
     - target: {fileID: 3760125754971408952, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786629879040623824, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5118937800478416850, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
       propertyPath: m_Name

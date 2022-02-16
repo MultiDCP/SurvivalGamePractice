@@ -4826,6 +4826,8 @@ GameObject:
   - component: {fileID: 3424002897011441724}
   - component: {fileID: 7209723969179142343}
   - component: {fileID: 4901664858888935908}
+  - component: {fileID: 2427328833775457208}
+  - component: {fileID: 4786629879040623824}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -9631,6 +9633,36 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2427328833775457208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897449963390287608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0d040339ea9ea4dbe9729deb8e0e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireName: CampFire
+  damage: 1
+  damageTime: 0.1
+  durationTime: 180
+  ps_Flame: {fileID: 7209723969179142343}
+--- !u!135 &4786629879040623824
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897449963390287608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: -1}
 --- !u!1 &5118937800478416850
 GameObject:
   m_ObjectHideFlags: 0
