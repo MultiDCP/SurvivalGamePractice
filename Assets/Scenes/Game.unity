@@ -425,7 +425,7 @@ Transform:
   - {fileID: 1842217650}
   - {fileID: 1959863059}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &65209524
 GameObject:
@@ -2738,6 +2738,7 @@ MonoBehaviour:
   go_InventoryBase: {fileID: 1795159137}
   go_SlotsParent: {fileID: 99631771}
   go_QuickSlotParent: {fileID: 1868960191}
+  theQuickSlot: {fileID: 347233148}
   items:
   - {fileID: 11400000, guid: c4dcf9f612fbcba408332a26b2f1f82a, type: 2}
   - {fileID: 11400000, guid: fb52198b8a1631044acc7f8124143563, type: 2}
@@ -3104,7 +3105,7 @@ RectTransform:
   - {fileID: 217210151}
   - {fileID: 1896222616}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4540,7 +4541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4297681099512413728, guid: b3402aa69a4d7fe49b0f535d6c852d74, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4297681099512413728, guid: b3402aa69a4d7fe49b0f535d6c852d74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5721,10 +5722,11 @@ MonoBehaviour:
   range: 3
   layerMask:
     serializedVersion: 2
-    m_Bits: 17408
+    m_Bits: 50176
   actionText: {fileID: 1783286656}
   theInventory: {fileID: 411708494}
   theWeaponManager: {fileID: 1623588088}
+  theQuickSlot: {fileID: 347233148}
   tf_MeatDissolveTool: {fileID: 1132699342}
   sound_meat: Meat_Dissolve
 --- !u!1 &976953233
@@ -24476,13 +24478,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 655294850, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 3748267699848595538, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
+      propertyPath: m_Drag
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748267699848595538, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748267699848595538, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748267699848595538, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3760125754971408952, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3760125754971408952, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24524,13 +24538,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4786629879040623824, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5118937800478416850, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
       propertyPath: m_Name
-      value: Fire
+      value: Campfire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f1e0a9a7938d34da5b9af0d46ebe4b, type: 3}
@@ -25588,7 +25598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6562450193520043485, guid: 7e396fa548a50fb419e0dba255a88fdf, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6562450193520043485, guid: 7e396fa548a50fb419e0dba255a88fdf, type: 3}
       propertyPath: m_LocalPosition.x

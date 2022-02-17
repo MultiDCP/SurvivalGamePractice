@@ -11,6 +11,7 @@ TagManager:
   - Twig
   - Grass
   - Tree
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Terrain
   - Building
   - NPC
-  - 
+  - Fire
   - 
   - 
   - 

@@ -181,7 +181,7 @@ public class QuickSlotController : MonoBehaviour
         AppearCalc();
     }
 
-    public void EatItem(){
+    public void DecreaseSelectedItem(){
         CoolTimeReset();
         AppearReset();
 
@@ -193,5 +193,9 @@ public class QuickSlotController : MonoBehaviour
 
     public bool GetIsGoolTime(){
         return isCoolTime;
+    }
+
+    public Slot GetSelectedSlot(){
+        return quickSlots[selectedSlot];
     }
 }

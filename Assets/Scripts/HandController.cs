@@ -30,7 +30,7 @@ public class HandController : CloseWeaponController
     private void TryEating(){
         if(Input.GetButtonDown("Fire2") && !theQuickSlot.GetIsGoolTime()){
             currentCloseWeapon.anim.SetTrigger("Eat");
-            theQuickSlot.EatItem();
+            theQuickSlot.DecreaseSelectedItem();
         }
     }
 

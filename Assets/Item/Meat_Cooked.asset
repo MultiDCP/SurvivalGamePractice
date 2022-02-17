@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43b160aea2dfd349a78c4181105ce56, type: 3}
+  m_Name: Meat_Cooked
+  m_EditorClassIdentifier: 
+  itemName: "\uAD6C\uC6B4 \uACE0\uAE30"
+  itemDesc: "\uC798 \uC775\uC740 \uB3FC\uC9C0\uACE0\uAE30."
+  itemType: 1
+  itemImage: {fileID: 21300000, guid: 45f475f554c4d2544bc43e23bda50886, type: 3}
+  itemPrefab: {fileID: 1869424609923494292, guid: b07c00e9d65839e4d96d804621d98c17, type: 3}
+  weaponType: 

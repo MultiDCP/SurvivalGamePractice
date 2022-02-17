@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4375605948231684645}
   m_Layer: 0
   m_Name: Fire_Smoke
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4828,9 +4828,11 @@ GameObject:
   - component: {fileID: 4901664858888935908}
   - component: {fileID: 2427328833775457208}
   - component: {fileID: 4786629879040623824}
-  m_Layer: 0
-  m_Name: Fire
-  m_TagString: Untagged
+  - component: {fileID: 3748267699848595532}
+  - component: {fileID: 3748267699848595538}
+  m_Layer: 15
+  m_Name: Flame
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9658,11 +9660,40 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2897449963390287608}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: -1}
+--- !u!135 &3748267699848595532
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897449963390287608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0, z: -0.6}
+--- !u!54 &3748267699848595538
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897449963390287608}
+  serializedVersion: 2
+  m_Mass: 0.001
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5118937800478416850
 GameObject:
   m_ObjectHideFlags: 0
@@ -9756,7 +9787,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8702211344975094144}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.65
   m_Height: 1
   m_Direction: 1
