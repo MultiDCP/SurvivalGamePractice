@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PreviewObject : MonoBehaviour
 {
+    public Building.Type needType;
+    private bool needTypeFlag;
+
     // 충돌한 오브젝트의 콜라이더 저장
     private List<Collider> colliderList = new List<Collider>();
 
@@ -17,13 +20,33 @@ public class PreviewObject : MonoBehaviour
     private Material red;
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.layer != layerGround && other.gameObject.layer != IGNORE_RAYCAST_LAYER)
-            colliderList.Add(other);
+        if(other.transform.tag == "Structure"){
+            if(other.GetComponent<Building>().type != needType){
+                colliderList.Add(other);
+            }
+            else{
+                needTypeFlag = true;
+            }
+        }
+        else{
+            if(other.gameObject.layer != layerGround && other.gameObject.layer != IGNORE_RAYCAST_LAYER)
+                colliderList.Add(other);
+        }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.gameObject.layer != layerGround && other.gameObject.layer != IGNORE_RAYCAST_LAYER)
-            colliderList.Remove(other);
+        if(other.transform.tag == "Structure"){
+            if(other.GetComponent<Building>().type != needType){
+                colliderList.Remove(other);
+            }
+            else{
+                needTypeFlag = false;
+            }
+        }
+        else{
+            if(other.gameObject.layer != layerGround && other.gameObject.layer != IGNORE_RAYCAST_LAYER)
+                colliderList.Remove(other);
+        }
     }
 
     private void SetColor(Material mat){
@@ -39,12 +62,23 @@ public class PreviewObject : MonoBehaviour
     }
 
     private void ChangeColor(){
-        if(colliderList.Count > 0){
-            SetColor(red);
+        if(needType == Building.Type.Normal){
+            if(colliderList.Count > 0){
+                SetColor(red);
+            }
+            else {
+                SetColor(green);
+            }
         }
-        else {
-            SetColor(green);
+        else{
+            if(colliderList.Count > 0 || !needTypeFlag){
+                SetColor(red);
+            }
+            else{
+                SetColor(green);
+            }
         }
+        
     }
 
     void Update() {
@@ -52,6 +86,11 @@ public class PreviewObject : MonoBehaviour
     }
 
     public bool isBuildable(){
-        return colliderList.Count == 0;
+        if(needType == Building.Type.Normal){
+            return colliderList.Count == 0;
+        }
+        else{
+            return colliderList.Count == 0 && needTypeFlag;
+        }
     }
 }

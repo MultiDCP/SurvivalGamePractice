@@ -119,6 +119,14 @@ public class CraftManual : MonoBehaviour
         if(Physics.Raycast(tf_Player.position, tf_Player.forward, out hitInfo, range, layerMask)){
             if(hitInfo.transform != null){
                 Vector3 _location = hitInfo.point;
+
+                if(Input.GetKeyDown(KeyCode.Q))
+                    go_Preview.transform.Rotate(0, -90f, 0f);
+                else if(Input.GetKeyDown(KeyCode.E))
+                    go_Preview.transform.Rotate(0, 90f, 0f);
+
+                _location.Set(Mathf.Round(_location.x), Mathf.Round(_location.y / 0.1f) * 0.1f, Mathf.Round(_location.z));
+                
                 go_Preview.transform.position = _location;
             }
         }
@@ -126,7 +134,7 @@ public class CraftManual : MonoBehaviour
 
     private void Build(){
         if(isPreviewActivated && go_Preview.GetComponent<PreviewObject>().isBuildable()){
-            Instantiate(go_Prefab, hitInfo.point, Quaternion.identity);
+            Instantiate(go_Prefab, go_Preview.transform.position, go_Preview.transform.rotation);
             Destroy(go_Preview);
             isActivated = false;
             isPreviewActivated = false;
