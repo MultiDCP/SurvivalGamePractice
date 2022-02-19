@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43b160aea2dfd349a78c4181105ce56, type: 3}
   m_Name: Twig
   m_EditorClassIdentifier: 
-  itemName: Twig
+  itemName: "\uB098\uBB47\uAC00\uC9C0"
   itemDesc: "\uC4F8\uB9CC\uD55C \uAE34 \uB098\uBB47\uAC00\uC9C0\uC774\uB2E4."
   itemType: 2
   itemImage: {fileID: 21300000, guid: d97f47aa16162ab4fa3490ab947d65db, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43b160aea2dfd349a78c4181105ce56, type: 3}
   m_Name: Log
   m_EditorClassIdentifier: 
-  itemName: Log
+  itemName: "\uD1B5\uB098\uBB34"
   itemDesc: "\uD2BC\uD2BC\uD558\uACE0 \uBB34\uAC70\uC6B4 \uD1B5\uB098\uBB34\uC774\uB2E4."
   itemType: 2
   itemImage: {fileID: 21300000, guid: 92a21472c922b144d9dab72709311b30, type: 3}
