@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     private bool flag = false;
 
     private void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         theWM = FindObjectOfType<WeaponManager>();
     }
 
@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
             canPlayerMove = false;
         }
         else{
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
             canPlayerMove = true;
         }
 
