@@ -13,6 +13,7 @@ TagManager:
   - Tree
   - Fire
   - Structure
+  - Computer
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Building
   - NPC
   - Fire
-  - 
+  - Computer
   - 
   - 
   - 

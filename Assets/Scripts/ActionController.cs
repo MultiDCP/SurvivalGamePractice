@@ -12,6 +12,7 @@ public class ActionController : MonoBehaviour
     private bool dissolveActivated = false; // 고기 해체 가능할 시
     private bool isDissolving = false; // 고기 해체 중에는 true
     private bool fireLookActivated = false; // 불 근접해서 바라볼 시 true
+    private bool lookComputer = false; // 컴퓨터 바라볼 시 true
 
     private RaycastHit hitInfo; // 충돌체 정보 저장
 
@@ -29,6 +30,8 @@ public class ActionController : MonoBehaviour
     private QuickSlotController theQuickSlot;
     [SerializeField]
     private Transform tf_MeatDissolveTool; // 고기 해체 툴
+    [SerializeField]
+    private ComputerKit theComputer;
 
     [SerializeField]
     private string sound_meat;
@@ -66,10 +69,20 @@ public class ActionController : MonoBehaviour
         }
     }
 
+    private void ComputerInfoAppear(){
+        if(!GameManager.isPowerOn){
+            ResetInfo();
+            lookComputer = true;
+            actionText.gameObject.SetActive(true);
+            actionText.text = "컴퓨터 가동 " + "<color=yellow>" + "(E)" + "</color>";
+        }
+    }
+
     private void InfoDisappear(){
         pickUpActivated = false;
         dissolveActivated = false;
         fireLookActivated = false;
+        lookComputer = false;
         actionText.gameObject.SetActive(false);
     }
 
@@ -85,6 +98,9 @@ public class ActionController : MonoBehaviour
             else if(hitInfo.transform.tag == "Fire"){
                 Debug.Log("인식은 했다");
                 FireInfoAppear();
+            }
+            else if(hitInfo.transform.tag == "Computer"){
+                ComputerInfoAppear();
             }
             else{
                 InfoDisappear();
@@ -167,12 +183,23 @@ public class ActionController : MonoBehaviour
         }
     }
 
+    private void CanComputerPowerOn(){
+        if(lookComputer){
+            if(hitInfo.transform != null){
+                if(!GameManager.isPowerOn)
+                    hitInfo.transform.GetComponent<ComputerKit>().PowerOn();
+                    InfoDisappear();
+            }
+        }
+    }
+
     private void TryAction(){
         if(Input.GetKeyDown(KeyCode.E)){
             CheckAction();
             CanPickUp();
             CanMeat();
             CanDropFire();
+            CanComputerPowerOn();
         }
     }
 

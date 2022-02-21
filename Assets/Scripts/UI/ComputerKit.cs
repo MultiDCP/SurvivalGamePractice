@@ -19,10 +19,14 @@ public class ComputerKit : MonoBehaviour
 
     [SerializeField]
     private Transform tf_ItemAppear; // 생성될 아이템 위치
+    [SerializeField]
+    private GameObject go_BaseUI;
 
     private bool isCraft = false; // 중복 실행 방지
 
     private Inventory theInven;
+    [SerializeField]
+    private ComputerToolTip theToolTip;
 
     private AudioSource theAudio;
     [SerializeField] private AudioClip sound_ButtonClick;
@@ -33,6 +37,33 @@ public class ComputerKit : MonoBehaviour
     private void Start() {
         theInven = FindObjectOfType<Inventory>();
         theAudio = GetComponent<AudioSource>();
+    }
+
+    private void Update() {
+        if(GameManager.isPowerOn){
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                PowerOff();
+            }
+        }
+    }
+
+    public void PowerOn(){
+        GameManager.isPowerOn = true;
+        go_BaseUI.SetActive(true);
+    }
+
+    private void PowerOff(){
+        GameManager.isPowerOn = false;
+        theToolTip.HideToolTip();
+        go_BaseUI.SetActive(false);
+    }
+
+    public void ShowToolTip(int _buttonNum){
+        theToolTip.ShowToolTip(kits[_buttonNum].kitName, kits[_buttonNum].kitDescription, kits[_buttonNum].needItemName, kits[_buttonNum].needItemNumber);
+    }
+
+    public void HideToolTip(){
+        theToolTip.HideToolTip();
     }
 
     private void PlaySE(AudioClip _clip){

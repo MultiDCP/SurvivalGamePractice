@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static bool isOpenInventory = false; // 인벤토리 활성화 여부
     public static bool isOpenCraftManual = false; // 건축 메뉴창 활성화 여부
+    public static bool isPowerOn = false; // 컴퓨터 전원 켜질 경우
 
     public static bool isNight = false;
     public static bool isWater = false;
@@ -18,20 +19,20 @@ public class GameManager : MonoBehaviour
     private bool flag = false;
 
     private void Start() {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         theWM = FindObjectOfType<WeaponManager>();
     }
 
     private void Update() {
-        if(isOpenInventory || isOpenCraftManual || isPause){
+        if(isOpenInventory || isOpenCraftManual || isPause || isPowerOn){
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             canPlayerMove = false;
         }
         else{
-            //Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             canPlayerMove = true;
         }
 
