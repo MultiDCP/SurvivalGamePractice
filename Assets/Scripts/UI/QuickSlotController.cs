@@ -62,9 +62,12 @@ public class QuickSlotController : MonoBehaviour
         go_SelectedImage.transform.position = quickSlots[selectedSlot].transform.position;
     }
 
-    IEnumerator HandItemCoroutine(){
+    IEnumerator HandItemCoroutine(Item _item){
         HandController.isActivate = false;
         yield return new WaitUntil(() => HandController.isActivate);
+
+        if(_item.itemType == Item.ItemType.Kit)
+            HandController.currentKit = _item;
 
         go_HandItem = Instantiate(quickSlots[selectedSlot].item.itemPrefab, tf_ItemPos.position, tf_ItemPos.rotation);
         go_HandItem.GetComponent<Rigidbody>().isKinematic = true;
@@ -78,7 +81,7 @@ public class QuickSlotController : MonoBehaviour
         StartCoroutine(theWeaponManager.ChangeWeaponCoroutine("HAND", "맨손"));
 
         if(_item != null){
-            StartCoroutine(HandItemCoroutine());// 아이템 손 끝에 생성
+            StartCoroutine(HandItemCoroutine(_item));// 아이템 손 끝에 생성
         }
     }
 
@@ -96,7 +99,7 @@ public class QuickSlotController : MonoBehaviour
                 StartCoroutine(theWeaponManager.ChangeWeaponCoroutine(
                     quickSlots[selectedSlot].item.weaponType, quickSlots[selectedSlot].item.itemName));
             }
-            else if(quickSlots[selectedSlot].item.itemType == Item.ItemType.Used){
+            else if(quickSlots[selectedSlot].item.itemType == Item.ItemType.Used || quickSlots[selectedSlot].item.itemType == Item.ItemType.Kit){
                 ChangeHand(quickSlots[selectedSlot].item);
             }
             else{

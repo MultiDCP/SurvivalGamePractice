@@ -20899,8 +20899,9 @@ MonoBehaviour:
   currentCloseWeapon: {fileID: 3078929795090185372}
   layerMask:
     serializedVersion: 2
-    m_Bits: 17971
+    m_Bits: 128563
   thePlayerController: {fileID: 1599840795}
+  rangeAdd: 3
   theQuickSlot: {fileID: 347233148}
 --- !u!114 &1623588086
 MonoBehaviour:

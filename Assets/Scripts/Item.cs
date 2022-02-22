@@ -12,12 +12,16 @@ public class Item : ScriptableObject
     public Sprite itemImage; // 이미지
     public GameObject itemPrefab; // 프리팹
 
+    public GameObject kitPrefab; // 키트 프리팹
+    public GameObject kitPreviewPrefab; // 키트 프리뷰 프리팹
+
     public string weaponType; // 무기 유형
 
     public enum ItemType{
         Equipment,
         Used,
         Ingredient,
+        Kit,
         ETC
     }
 }
