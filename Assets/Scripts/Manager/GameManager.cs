@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static bool isOpenInventory = false; // 인벤토리 활성화 여부
     public static bool isOpenCraftManual = false; // 건축 메뉴창 활성화 여부
     public static bool isPowerOn = false; // 컴퓨터 전원 켜질 경우
+    public static bool isOpenArchemyTable = false; // 연금 테이블 활성화 여부
 
     public static bool isNight = false;
     public static bool isWater = false;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
-        if(isOpenInventory || isOpenCraftManual || isPause || isPowerOn){
+        if(isOpenInventory || isOpenCraftManual || isPause || isPowerOn || isOpenArchemyTable){
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             canPlayerMove = false;

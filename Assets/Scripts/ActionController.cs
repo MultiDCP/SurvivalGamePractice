@@ -13,6 +13,7 @@ public class ActionController : MonoBehaviour
     private bool isDissolving = false; // 고기 해체 중에는 true
     private bool fireLookActivated = false; // 불 근접해서 바라볼 시 true
     private bool lookComputer = false; // 컴퓨터 바라볼 시 true
+    private bool lookArchemyTable = false; // 연금 테이블 바라볼 시 true
 
     private RaycastHit hitInfo; // 충돌체 정보 저장
 
@@ -78,11 +79,21 @@ public class ActionController : MonoBehaviour
         }
     }
 
+    private void ArchemyInfoAppear(){
+        if(!GameManager.isOpenArchemyTable){
+            ResetInfo();
+            lookArchemyTable = true;
+            actionText.gameObject.SetActive(true);
+            actionText.text = "연금 테이블 조작 " + "<color=yellow>" + "(E)" + "</color>";
+        }
+    }
+
     private void InfoDisappear(){
         pickUpActivated = false;
         dissolveActivated = false;
         fireLookActivated = false;
         lookComputer = false;
+        lookArchemyTable = false;
         actionText.gameObject.SetActive(false);
     }
 
@@ -101,6 +112,9 @@ public class ActionController : MonoBehaviour
             }
             else if(hitInfo.transform.tag == "Computer"){
                 ComputerInfoAppear();
+            }
+            else if(hitInfo.transform.tag == "ArchemyTable"){
+                ArchemyInfoAppear();
             }
             else{
                 InfoDisappear();
@@ -193,6 +207,15 @@ public class ActionController : MonoBehaviour
         }
     }
 
+    private void CanArchemyTableOpen(){
+        if(lookArchemyTable){
+            if(hitInfo.transform != null){
+                    hitInfo.transform.GetComponent<ArchemyTable>().Window();
+                    InfoDisappear();
+            }
+        }
+    }
+
     private void TryAction(){
         if(Input.GetKeyDown(KeyCode.E)){
             CheckAction();
@@ -200,6 +223,7 @@ public class ActionController : MonoBehaviour
             CanMeat();
             CanDropFire();
             CanComputerPowerOn();
+            CanArchemyTableOpen();
         }
     }
 
