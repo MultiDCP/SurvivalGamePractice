@@ -9,6 +9,9 @@ public class ArchemyItem{
     public string itemDesc;
     public Sprite itemImage;
 
+    public string[] needItemName;
+    public int[] needItemNumber;
+
     public float itemCraftTime; // 포션 제조에 걸리는 시간
 
     public GameObject go_ItemPrefab;
@@ -38,9 +41,25 @@ public class ArchemyTable : MonoBehaviour
     [SerializeField] private GameObject go_Liquid; // 동작시키면 액체 등장
     [SerializeField] private Image[] image_CraftingItems; // 대기열 슬롯의 아이템 이미지들
 
+    [SerializeField] private ArchemyToolTip theToolTip;    
+    private Inventory theInven;
+
+    private AudioSource theAudio;
+    [SerializeField] private AudioClip sound_ButtonClick;
+    [SerializeField] private AudioClip sound_Beep;
+    [SerializeField] private AudioClip sound_Activate;
+    [SerializeField] private AudioClip sound_PopItem;
+
     private void Start() {
+        theInven = FindObjectOfType<Inventory>();
+        theAudio = GetComponent<AudioSource>();
         ClearSlot();
         PageSetting();
+    }
+
+    private void PlaySE(AudioClip _clip){
+        theAudio.clip = _clip;
+        theAudio.Play();
     }
 
     private void OpenWindow(){
@@ -67,18 +86,37 @@ public class ArchemyTable : MonoBehaviour
     private void ProductionComplete(){
         isCrafting = false;
         image_CraftingItems[0].gameObject.SetActive(false);
+
+        PlaySE(sound_PopItem);
         
         Instantiate(currentCraftingItem.go_ItemPrefab, tf_PotionAppearPos.position, Quaternion.identity);
     }
 
     public void ButtonClick(int _buttonNum){
+        PlaySE(sound_ButtonClick);
         if(archemyItemQueue.Count < 3){
             int archemyItemArrayNumber = _buttonNum + ((page - 1) * theNumberOfSlot);
+
+            // 인벤토리에서 재료 검색
+            for(int i=0; i<archemyItems[archemyItemArrayNumber].needItemName.Length; i++){
+                if(theInven.GetItemCount(archemyItems[archemyItemArrayNumber].needItemName[i]) < archemyItems[archemyItemArrayNumber].needItemNumber[i]){
+                    PlaySE(sound_Beep);
+                    return;
+                }
+            }
+
+            // 인벤토리 재료 감산
+            for(int i=0; i<archemyItems[archemyItemArrayNumber].needItemName.Length; i++){
+                theInven.SetItemCount(archemyItems[archemyItemArrayNumber].needItemName[i], archemyItems[archemyItemArrayNumber].needItemNumber[i]);
+            }
 
             archemyItemQueue.Enqueue(archemyItems[archemyItemArrayNumber]);
 
             image_CraftingItems[archemyItemQueue.Count].gameObject.SetActive(true);
             image_CraftingItems[archemyItemQueue.Count].sprite = archemyItems[archemyItemArrayNumber].itemImage;
+        }
+        else{
+            PlaySE(sound_Beep);
         }
     }
 
@@ -94,6 +132,7 @@ public class ArchemyTable : MonoBehaviour
     }
 
     private void PopItem(){
+        PlaySE(sound_Activate);
         isCrafting = true;
         currentCraftingItem = archemyItemQueue.Dequeue();
 
@@ -164,6 +203,7 @@ public class ArchemyTable : MonoBehaviour
     }
 
     public void UpButton(){
+        PlaySE(sound_ButtonClick);
         if(page != 1)
             page--;
         else
@@ -174,6 +214,7 @@ public class ArchemyTable : MonoBehaviour
     }
 
     public void DownButton(){
+        PlaySE(sound_ButtonClick);
         if(page < 1 + (archemyItems.Length / theNumberOfSlot))
             page++;
         else
@@ -181,5 +222,14 @@ public class ArchemyTable : MonoBehaviour
 
         ClearSlot();
         PageSetting();
+    }
+
+    public void ShowToolTip(int _buttonNum){
+        int _archemyItemArrayNumber = _buttonNum + ((page - 1) * theNumberOfSlot);
+        theToolTip.ShowToolTip(archemyItems[_archemyItemArrayNumber].needItemName, archemyItems[_archemyItemArrayNumber].needItemNumber);
+    }
+
+    public void HideToolTip(){
+        theToolTip.HideToolTip();
     }
 }
