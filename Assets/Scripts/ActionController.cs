@@ -14,6 +14,7 @@ public class ActionController : MonoBehaviour
     private bool fireLookActivated = false; // 불 근접해서 바라볼 시 true
     private bool lookComputer = false; // 컴퓨터 바라볼 시 true
     private bool lookArchemyTable = false; // 연금 테이블 바라볼 시 true
+    private bool lookActivatedTrap = false; // 가동된 함정 바라볼 시 true
 
     private RaycastHit hitInfo; // 충돌체 정보 저장
 
@@ -88,12 +89,22 @@ public class ActionController : MonoBehaviour
         }
     }
 
+    private void TrapInfoAppear(){
+        if(hitInfo.transform.GetComponent<DeadTrap>().GetIsActivated()){
+            ResetInfo();
+            lookActivatedTrap = true;
+            actionText.gameObject.SetActive(true);
+            actionText.text = "함정 재설치 " + "<color=yellow>" + "(E)" + "</color>";
+        }
+    }
+
     private void InfoDisappear(){
         pickUpActivated = false;
         dissolveActivated = false;
         fireLookActivated = false;
         lookComputer = false;
         lookArchemyTable = false;
+        lookActivatedTrap = false;
         actionText.gameObject.SetActive(false);
     }
 
@@ -115,6 +126,9 @@ public class ActionController : MonoBehaviour
             }
             else if(hitInfo.transform.tag == "ArchemyTable"){
                 ArchemyInfoAppear();
+            }
+            else if(hitInfo.transform.tag == "Trap"){
+                TrapInfoAppear();
             }
             else{
                 InfoDisappear();
@@ -216,6 +230,15 @@ public class ActionController : MonoBehaviour
         }
     }
 
+    private void CanReInstallTrap(){
+        if(lookActivatedTrap){
+            if(hitInfo.transform != null){
+                    hitInfo.transform.GetComponent<DeadTrap>().ReInstall();
+                    InfoDisappear();
+            }
+        }
+    }
+
     private void TryAction(){
         if(Input.GetKeyDown(KeyCode.E)){
             CheckAction();
@@ -224,6 +247,7 @@ public class ActionController : MonoBehaviour
             CanDropFire();
             CanComputerPowerOn();
             CanArchemyTableOpen();
+            CanReInstallTrap();
         }
     }
 

@@ -27764,6 +27764,63 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0034776935, y: 0.014626874, z: 0.0071942145}
     m_Extent: {x: 0.0026014755, y: 0.0019342904, z: 0.0014039036}
   m_DirtyAABB: 0
+--- !u!1001 &7997340496926976086
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 40.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661793, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997340495749661795, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
+      propertyPath: m_Name
+      value: DeadTrap
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2172d012f4c3a94ab4b08ed4e087928, type: 3}
 --- !u!137 &8042651873817480402
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
